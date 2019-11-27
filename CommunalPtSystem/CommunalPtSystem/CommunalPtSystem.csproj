@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>resources\communal_payments.ico</ApplicationIcon>
+    <Win32Resource></Win32Resource>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="resources\add.png" />
+    <None Remove="resources\communal_payments.ico" />
+    <None Remove="resources\delete.png" />
+    <None Remove="resources\edit.png" />
+    <None Remove="resources\excel.png" />
+    <None Remove="resources\filter.png" />
+    <None Remove="resources\information.png" />
+    <None Remove="resources\minus.png" />
+    <None Remove="resources\reset.png" />
+    <None Remove="sqlite.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="3.6.0" />
+    <PackageReference Include="Gu.Wpf.Adorners" Version="1.5.2" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.112" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\add.png" />
+    <Resource Include="resources\communal_payments.ico" />
+    <Resource Include="resources\delete.png" />
+    <Resource Include="resources\edit.png" />
+    <Resource Include="resources\excel.png" />
+    <Resource Include="resources\filter.png" />
+    <Resource Include="resources\information.png" />
+    <Resource Include="resources\minus.png" />
+    <Resource Include="resources\reset.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

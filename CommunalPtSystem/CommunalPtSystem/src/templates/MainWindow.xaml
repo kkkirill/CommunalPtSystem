@@ -1,0 +1,116 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommunalPtSystem"
+        xmlns:adorners="http://gu.se/Adorners"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="CommunalPtSystem.MainWindow"
+        mc:Ignorable="d"
+        Title="Communal Payment Management System" Height="553" Width="842" ResizeMode="CanMinimize">
+
+    <Grid>
+        <ListView x:Name="PaymentsList" Margin="27,157,33,65" AutomationProperties.Name="PaymentsList" ItemsSource="{Binding PaymentDocuments}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <!--<GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>-->
+                    <GridViewColumn Header="Id" Width="75" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn x:Name="AddressField" Header="Address" Width="400" DisplayMemberBinding="{Binding Address}" />
+                    <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding Date, StringFormat='dd.MM.yyyy'}" />
+                    <GridViewColumn Header="Total Sum" Width="133" DisplayMemberBinding="{Binding TotalSum}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <xctk:IconButton x:Name="ShowButton" Content="Show" HorizontalAlignment="Left" IconLocation="Left" Margin="34,472,0,0" VerticalAlignment="Top" Height="30" Width="110" Click="ShowButton_Click" AutomationProperties.Name="ShowButton">
+            <xctk:IconButton.Icon>
+                <Image Source="../../resources/information.png" Width="16" Margin="0,0,40,0"/>
+            </xctk:IconButton.Icon>
+        </xctk:IconButton>
+        <xctk:IconButton x:Name="AddButton" Content="Add" HorizontalAlignment="Left" IconLocation="Left" Margin="149,472,0,0" VerticalAlignment="Top" Height="30" Width="110" AutomationProperties.Name="AddButton" Click="AddButton_Click">
+            <xctk:IconButton.Icon>
+                <Image Source="../../resources/add.png" Width="16" Margin="0,0,40,0"/>
+            </xctk:IconButton.Icon>
+        </xctk:IconButton>
+        <xctk:IconButton x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" IconLocation="Left" Margin="264,472,0,0" VerticalAlignment="Top" Height="30" Width="110" AutomationProperties.Name="EditButton" Click="EditButton_Click">
+            <xctk:IconButton.Icon>
+                <Image Source="../../resources/edit.png" Width="16" Margin="0,0,40,0"/>
+            </xctk:IconButton.Icon>
+        </xctk:IconButton>
+        <xctk:IconButton x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" IconLocation="Left" Margin="379,472,0,0" VerticalAlignment="Top" Height="30" Width="110" AutomationProperties.Name="DeleteButton" Click="DeleteButton_Click">
+            <xctk:IconButton.Icon>
+                <Image Source="../../resources/delete.png" Width="16" Margin="0,0,35,0"/>
+            </xctk:IconButton.Icon>
+        </xctk:IconButton>
+        <!--<xctk:IconButton x:Name="ExportButton" Content="Export to Excel" HorizontalAlignment="Left" IconLocation="Left" Margin="679,472,0,0" VerticalAlignment="Top" Height="30" Width="110" AutomationProperties.Name="ExportButton" Click="ExportButton_Click">
+            <xctk:IconButton.Icon>
+                <Image Source="../../resources/excel.png" Width="16" Margin="0,0,5,0"/>
+            </xctk:IconButton.Icon>
+        </xctk:IconButton>-->
+        <GroupBox Header="Filter" Margin="27,0,33,370">
+            <Grid HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="363*"/>
+                    <ColumnDefinition Width="16*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Period" Margin="0,5,506,0">
+                    <Grid HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+                        <DatePicker x:Name="MinDateFilter" HorizontalAlignment="Left" Margin="61,23,0,0" VerticalAlignment="Top" Height="30" Width="139" AutomationProperties.Name="MinDateFilter"/>
+                        <Label Content="From" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="5,23,0,0" VerticalAlignment="Top" Width="45" Height="30" RenderTransformOrigin="0.493,0.624"/>
+                        <Label Content="To" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="5,58,0,0" VerticalAlignment="Top" Width="45" Height="30"/>
+                        <DatePicker x:Name="MaxDateFilter" HorizontalAlignment="Left" Margin="61,61,0,0" VerticalAlignment="Top" Height="30" Width="139" AutomationProperties.Name="MaxDateFilter"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Total Sum Range" Margin="236,5,273,0">
+                    <Grid Height="Auto" Margin="0,0,-2,0" Width="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="218*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Min sum value" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="4,23,0,0" VerticalAlignment="Top" Width="89" Height="30" Grid.Column="1"/>
+                        <Label Content="Max sum value" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="89" Height="30" Grid.Column="1"/>
+                        <TextBox x:Name="MinSumFilter" PreviewTextInput="NumberValidationTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Height="30" Margin="108,23,0,0" AutomationProperties.Name="MinSumFilter" Grid.Column="1"/>
+                        <TextBox x:Name="MaxSumFilter" PreviewTextInput="NumberValidationTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Height="30" Margin="108,61,0,0" AutomationProperties.Name="MaxSumFilter" Grid.Column="1"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Address Filter" Margin="469,5,37,0">
+                    <Grid Height="Auto" Margin="0,0,-2,0" Width="Auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="CityFilter" VerticalContentAlignment="Center" HorizontalAlignment="Left" adorners:Watermark.Text="City" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" Height="20" Margin="8,6,0,0" AutomationProperties.Name="CityFilter"/>
+                        <TextBox x:Name="StreetFilter" VerticalContentAlignment="Center" HorizontalAlignment="Left" adorners:Watermark.Text="Street" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" Height="20" Margin="8,32,0,0" Grid.RowSpan="2" AutomationProperties.Name="StreetFilter"/>
+                        <TextBox x:Name="HouseNumberFilter" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center" HorizontalAlignment="Left" adorners:Watermark.Text="House №" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="20" Margin="15,33,0,0" Grid.Row="1" AutomationProperties.Name="HouseNumberFilter"/>
+                        <TextBox x:Name="FlatNumberFilter" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center" HorizontalAlignment="Left" adorners:Watermark.Text="Flat №" adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Height="20" Margin="117,33,0,0" Grid.Row="1" AutomationProperties.Name="FlatNumberFilter"/>
+                    </Grid>
+                </GroupBox>
+                <xctk:IconButton x:Name="FilterButton" HorizontalAlignment="Left" IconLocation="Left" Margin="705,38,0,0" VerticalAlignment="Top" Height="26" Width="40" RenderTransformOrigin="0.894,0.574" Grid.ColumnSpan="2" ToolTip="Apply filters" Click="FilterButton_Click">
+                    <xctk:IconButton.Icon>
+                        <Image Source="../../resources/filter.png" Width="16" Margin="0,0,0,0"/>
+                    </xctk:IconButton.Icon>
+                </xctk:IconButton>
+                <xctk:IconButton x:Name="ResetFilterButton" HorizontalAlignment="Left" IconLocation="Left" Margin="705,80,0,0" VerticalAlignment="Top" Height="26" Width="40" RenderTransformOrigin="0.894,0.574" Grid.ColumnSpan="2" ToolTip="Reset filters" Click="ResetFilterButton_Click">
+                    <xctk:IconButton.Icon>
+                        <Image Source="../../resources/reset.png" Width="16" Margin="0,0,0,0"/>
+                    </xctk:IconButton.Icon>
+                </xctk:IconButton>
+
+            </Grid>
+        </GroupBox>
+        <!--<ComboBox HorizontalAlignment="Left" Margin="494,473,0,0" VerticalAlignment="Top" Width="140" Height="28">
+            <ComboBoxItem IsSelected="True">Payment Document</ComboBoxItem>
+            <ComboBoxItem>Service Type</ComboBoxItem>
+            <ComboBoxItem>Service</ComboBoxItem>
+            <ComboBoxItem>Address</ComboBoxItem>
+        </ComboBox>-->
+    </Grid>
+</Window>
