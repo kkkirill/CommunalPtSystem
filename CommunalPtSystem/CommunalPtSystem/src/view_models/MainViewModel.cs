@@ -1,22 +1,12 @@
 ﻿using CommunalPtSystem.src.utils;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 
 namespace CommunalPtSystem.src.view_models
 {
-    class MainViewModel : INotifyCollectionChanged
+    class MainViewModel
     {
-
-        public event NotifyCollectionChangedEventHandler CollectionChanged = delegate { };
-        public void OnCollectionChanged(NotifyCollectionChangedAction action)
-        {
-            if (CollectionChanged != null)
-            {
-                CollectionChanged(this, new NotifyCollectionChangedEventArgs(action));
-            }
-        }
         public Filter filter { get; set; }
 
         private ObservableCollection<CommunalPaymentDocument> _paymentDocuments;
