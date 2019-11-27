@@ -342,31 +342,6 @@ namespace CommunalPtSystem.src.utils
             return values;
         }
 
-        //public List<CommunalPaymentDocument> GetCommunalPaymentDocuments(bool withChilds = false)
-        //{
-        //    return withChilds ? db.GetAllWithChildren<CommunalPaymentDocument>(recursive: true) 
-        //                      : db.Table<CommunalPaymentDocument>().ToList();
-        //}
-
-        //public List<Address> GetAddresses(bool withChilds = false)
-        //{
-        //    return withChilds ? db.GetAllWithChildren<Address>()
-        //                      : db.Table<Address>().ToList();
-        //}
-
-        //public List<ServiceType> GetServiceTypes(bool withChilds = false)
-        //{
-        //    return withChilds ? db.GetAllWithChildren<ServiceType>()
-        //                      : db.Table<ServiceType>().ToList();
-        //}
-
-        //public List<Service> GetServices(bool withChilds = false)
-        //{
-        //    return withChilds ? db.GetAllWithChildren<Service>()
-        //                      : db.Table<Service>().ToList();
-        //}
-
-
         /// Get element by id
 
         public T GetElementById<T>(int id, bool withChilds = true)
@@ -407,30 +382,6 @@ namespace CommunalPtSystem.src.utils
         {
             db.Delete(element);
         }
-
-        //public CommunalPaymentDocument GetCommunalPaymentDocumentsById(int id, bool withChilds = true)
-        //{
-        //    return withChilds ? db.GetWithChildren<CommunalPaymentDocument>(id)
-        //                      : db.Get<CommunalPaymentDocument>(id);
-        //}
-
-        //public Address GetAddressById(int id, bool withChilds = true)
-        //{
-        //    return withChilds ? db.GetWithChildren<Address>(id)
-        //                      : db.Get<Address>(id);
-        //}
-
-        //public ServiceType GetServiceTypeById(int id, bool withChilds = true)
-        //{
-        //    return withChilds ? db.GetWithChildren<ServiceType>(id)
-        //                      : db.Get<ServiceType>(id);
-        //}
-
-        //public Service GetServiceById(int id, bool withChilds = true)
-        //{
-        //    return withChilds ? db.GetWithChildren<Service>(id)
-        //                      : db.Get<Service>(id);
-        //}
 
     }
 }

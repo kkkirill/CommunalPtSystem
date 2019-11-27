@@ -1,9 +1,4 @@
-﻿using CommunalPtSystem.src.models;
-using SQLite;
-using SQLiteNetExtensions.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SQLite;
 
 namespace CommunalPtSystem
 {

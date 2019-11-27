@@ -5,8 +5,6 @@ using System.Windows;
 using System.Windows.Input;
 using CommunalPtSystem.src.utils;
 using System;
-using System.Windows.Data;
-using System.ComponentModel;
 
 namespace CommunalPtSystem
 {

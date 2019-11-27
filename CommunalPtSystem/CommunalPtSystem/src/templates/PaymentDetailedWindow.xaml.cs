@@ -148,9 +148,6 @@ namespace CommunalPtSystem.src.templates
 
             (services ??= new List<Service>()).Add(newService);
 
-            //(document.Services ??= new List<Service>()).Add(newService);
-
-            Services.ItemsSource = services;
             Services.Items.Refresh();           
         }
 
